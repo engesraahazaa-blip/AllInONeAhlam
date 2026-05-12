@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* تنسيق قسم البطل */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background-image: url('imges/heroProduct.png'); /* تحقق من أن مسار الصورة صحيح */
+            background-size: cover; /* تكبير الصورة لتغطي الخلفية بالكامل */
+            background-position: center;
+            background-repeat: no-repeat; /* منع تكرار الصورة */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* تنسيق قسم المنتجات */
+        .product-section {
+            text-align: right; /* محاذاة النص إلى اليمين */
+            padding: 60px;
+            border-bottom: 1px solid #0c047a; /* إضافة حدود فاصلة كحلية */
+        }
+
+        .product-title {
+            font-size: 28px;
+            color: #0c047a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .product-images {
+            display: flex;
+            justify-content: space-between; /* توزيع الصور بالتساوي */
+            flex-wrap: wrap; /* السماح بالتفاف الصور في الصف التالي إذا كانت الشاشة ضيقة */
+            gap: 20px; /* إضافة مساحة بين العناصر */
+        }
+
+        .product-item {
+            flex: 1 1 calc(24% - 20px); /* ضمان أن تكون المنتجات 4 في الصف الواحد وتتناسب مع المساحة */
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #0b006d; /* إضافة حدود لكل منتج */
+            border-radius: 10px; /* حواف دائرية للحدود */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل لكل منتج */
+            transition: transform 0.3s, box-shadow 0.3s; /* إضافة تأثير التحويل والظل */
+            background: #e4dfdf; /* خلفية بيضاء للمنتج */
+        }
+
+        .product-item img {
+            width: 100%; /* تحديد العرض بالكامل */
+            height: auto; /* تحديد الطول تلقائيًا */
+            border-top-left-radius: 10px; /* حواف دائرية لأعلى الصورة */
+            border-top-right-radius: 10px; /* حواف دائرية لأعلى الصورة */
+            transition: transform 0.2s; /* إضافة تأثير التحويل */
+        }
+
+        .product-item:hover {
+            transform: scale(1.02); /* تكبير المنتج عند التأشير */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* زيادة الظل عند التأشير */
+        }
+
+        .product-description {
+            font-size: 14px; /* تصغير حجم النص */
+            color: #000000;
+            margin: 10px; /* إضافة هوامش للنص */
+        }
+
+        .product-price {
+            font-size: 16px; /* تصغير حجم النص */
+            color: #0c047a;
+            font-weight: bold;
+            margin: 10px; /* إضافة هوامش للنص */
+        }
+
+        /* استجابة الشاشات الأصغر */
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+            }
+
+            .product-item {
+                flex: 1 1 calc(48% - 20px); /* عرض عنصرين في الصف */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: auto;
+            }
+
+            .product-item {
+                flex: 1 1 calc(100% - 20px); /* عرض عنصر واحد في الصف */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="imges/mainLogo.png" alt="شعار الموقع">
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.html">الرئيسية</a></li>
+            <li><a href="products.html">منتجاتنا</a></li>
+            <li><a href="detealsAboutBacks.html">تفاصيل الحزم</a></li>
+            <li><a href="contactPage.html">تواصل معنا</a></li>
+            <li><a href="activiteys.html">الأنشطة والميزات</a></li>
+            <li><a href="BookingPage.html">تفاصيل المرافق</a></li>
+            <li><a href="aboutUs.html">نبذه عنا</a></li>
+        </ul>
+    </nav>
+    <!-- قسم البطل -->
+    <section class="hero">
+        <img src="imges/heroProduct.png" alt="صورة المنتج">
+    </section>
+     <!-- خانة تكبير وتصغير الخط -->
+     <div class="font-size-control">
+        <button onclick="changeFontSize(true)">+</button>
+        <button onclick="changeFontSize(false)">-</button>
+    </div>
+<!-- زر قراءة النص بصوت عالٍ -->
+<div style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; align-items: center;">
+    <button onclick="speakSelectedText()" style="padding: 10px 20px; font-size: 16px; margin-bottom: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">اقرأ النص بصوت عالٍ</button>
+    <button onclick="stopText()" style="padding: 10px 20px; font-size: 16px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">إيقاف القراءة</button>
+</div>
+
+<script>
+    /**
+     * قراءة النص المحدد بصوت عالٍ
+     */
+    function speakSelectedText() {
+        if ('speechSynthesis' in window) {
+            var selectedText = window.getSelection().toString();
+            if (selectedText) {
+                var utterance = new SpeechSynthesisUtterance(selectedText);
+                // الكشف عن اللغة واختيار اللغة المناسبة
+                var lang = /[\u0600-\u06FF]/.test(selectedText) ? 'ar' : 'en';
+                utterance.lang = lang;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('يرجى تحديد النص الذي تريد قراءته.');
+            }
+        } else {
+            alert('متصفحك لا يدعم خاصية تحويل النص إلى كلام.');
+        }
+    }
+
+    /**
+     * إيقاف قراءة النص بصوت عالٍ
+     */
+    function stopText() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+</script>
+
+    <!-- قسم المنتجات 1 -->
+    <section class="product-section">
+        <h2 class="product-title">الحقائب</h2>
+        <div class="product-images">
+            <div class="product-item">
+                <img src="imges/carry-bags-q1-2023.jpg" alt="منتج 1">
+                <div class="product-description">حقيبة جولف ذات جودة عالية  يمكنك استخدامها بشكل يومي  </div>
+                <div class="product-price">300 دولار</div>
+            </div>
+            <div class="product-item">
+                <img src="imges/cart-bags-q1-2023.jpg" alt="منتج 2">
+                <div class="product-description">حقيبة حمل للجولف  مناسبة للمحترفين</div>
+                <div class="product-price">500 دينار</div>
+            </div>
+            <div class="product-item">
+                <img src="imges/stand-bags-q1-2023.jpg" alt="منتج 3">
+                <div class="product-description">  حقيبة متينه يمكنها الاستناد بنفسها ذات جوده عالية مناسبة لحمل أكبر عدد من المعدات</div>
+                <div class="product-price">350 دينار</div>
+            </div>
+            <div class="product-item">
+                <img src="imges/travel-bags-q1-2023.jpg" alt="منتج 4">
+                <div class="product-description">  حقيبة مناسبة جدا للاستخدام اليومي وللمحترفين</div>
+                <div class="product-price">600 دينار</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المنتجات 2 -->
+    <section class="product-section">
+        <h2 class="product-title">  كرات الجولف</h2>
+        <div class="product-images">
+            <div class="product-item">
+                <img src="imges/balls6.jpg" alt="منتج 1">
+                <div class="product-description"> كرات جولف ماركة عالمية   </div>
+                <div class="product-price">20 دينار</div>
+            </div>
+            <div class="product-item">
+                <img src="imges/balls4.jpg" alt="منتج 2">
+                <div class="product-description">  كرات جولف ماركة  عالمية</div>
+                <div class="product-price">25 دينار</div>
+            </div>
+            <div class="product-item">
+                <img src="imges/balls2.jpg" alt="منتج 3">
+                <div class="product-description">  كرات جولف ماركة عالمية </div>
+                <div class="product-price">30 دينار</div>
+            </div>
+            <div class="product-item">
+                <img src="imges/titleist-2025-pro-v1x-golf-balls-dozen-rf-itempicture.jpg" alt="منتج 4">
+                <div class="product-description">  كرات جولف ماركة عالمية </div>
+                <div class="product-price">35 دينار</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المنتجات 3 -->
+    <section class="product-section">
+        <h2 class="product-title">  القفازات</h2>
+        <div class="product-images">
+            <div class="product-item">
+                <img src="imges/gloves.jpg" alt="منتج 1">
+                <div class="product-description"> قفاوان احترافية</div>
+                <div class="product-price">20 دينار</div>
+            </div>
+            <div class="product-item">
+                <img src="imges/gloves3.avif" alt="منتج 2">
+                <div class="product-description">   قفازات احترافية</div>
+                <div class="product-price">25 دينار</div>
+            </div>
+            <div class="product-item">
+                <img src="imges/gloves4.avif" alt="منتج 3">
+                <div class="product-description"> قفازات احترافية </div>
+            </div>
+
+            <div class="product-item">
+                <img src="imges/gloves5.avif" alt="منتج 4">
+                <div class="product-description"> قفازات محترفين</div>
+                <div class="product-price">35 دينار</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المنتجات 4 -->
+    <section class="product-section">
+        <h2 class="product-title">  الأحذية</h2>
+        <div class="product-images">
+            <div class="product-item">
+                <img src="imges/shoes5ForWomen.jpg" alt="منتج 1">
+                <div class="product-description">  حذاء رياضي</div>
+                <div class="product-price">60 دينار</div>
+            </div>
+            <div class="product-item">
+                <img src="imges/shoes4ForWomens.jpg" alt="منتج 2">
+                <div class="product-description">  حذاء رياضي</div>
+                <div class="product-price">110 دينار</div>
+            </div>
+            <div class="product-item">
+                <img src="imges/shoes3ForWomens.jpg" alt="منتج 3">
+                <div class="product-description">  حذاء رياضي</div>
+                <div class="product-price">45 دينار</div>
+            </div>
+            <div class="product-item">
+                <img src="imges/shoes2ForMen.jpg" alt="منتج 4">
+                <div class="product-description"> حذاء رياضي</div>
+                <div class="product-price">70 دينار</div>
+            </div>
+        </div>
+    </section>
+
+  <!-- قسم التذييل -->
+  <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-info">
+            <p>الموقع: البرتغال</p>
+            <p>حقوق النشر والطباعة &copy; 2025 جميع الحقوق محفوظة</p>
+            <p>رقم الهاتف: +962-6-1234567</p>
+            <p>تم تطوير هذا الموقع من قبل : أحلام عنانزة</p>
+        </div>
+        <div class="footer-links">
+            <a href="#contact">المساعدة</a>
+            <a href="#contact">اتصل بنا</a>
+            <a href="#aboutUs">سياسة الخصوصية</a>
+        </div>
+    </div>     
+</footer>
+<script>
+    /**
+     * تغيير حجم الخط على النصوص في صفحة الويب
+     * @param {boolean} increase - إذا كان true، يتم تكبير حجم النصوص، إذا كان false، يتم تصغير حجم النصوص
+     */
+    function changeFontSize(increase) {
+        var elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li, span'); // اختيار العناصر النصية فقط
+        elements.forEach(function(element) {
+            var currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+
+            // التحقق من قيمة الزيادة أو النقصان وتعديل حجم النصوص وفقًا لذلك
+            if (increase) {
+                element.style.fontSize = (currentSize + 1) + 'px';
+            } else {
+                element.style.fontSize = (currentSize - 1) + 'px';
+            }
+        });
+    }
+</script>
+</body>
+</html>
+

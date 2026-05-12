@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+       /* تنسيق قسم البطل */
+.hero-section {
+    width: 100%;
+    height: 100vh; /* اجعل الصورة تغطي كامل الشاشة */
+    background: url('imges/Hc3.png') no-repeat center center/cover; /* صورة قسم البطل */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 200px; /* أضف هذه الخاصية لتحديد المسافة */
+}
+
+
+        .hero-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* تنسيق قسم الرؤية والرسالة */
+        .vision-mission-section {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd; /* حدود رفيعة للصندوق */
+            margin: 20px;
+            border-radius: 10px; /* زوايا مستديرة للصندوق */
+        }
+
+        /* تنسيق قسم العملاء المتميزين */
+        .clients-section {
+            padding: 40px 20px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .clients {
+            display: flex;
+            justify-content: space-around; /* ترتيب العملاء بجانب بعضهم */
+            align-items: center;
+            flex-wrap: wrap; /* التفاف العناصر إذا لم يكن هناك مساحة كافية */
+        }
+
+        .client {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd; /* حدود رفيعة للصندوق */
+            border-radius: 10px; /* زوايا مستديرة للصندوق */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* تأثير التفاعل */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ظل خفيف للصندوق */
+            width: 280px; /* عرض الصندوق */
+        }
+
+        .client:hover {
+            transform: scale(1.05); /* تكبير عند التفاعل */
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* زيادة الظل عند التفاعل */
+        }
+
+        .client img {
+            border-radius: 10px; /* زوايا مستديرة للصورة */
+            width: 100%; /* حجم الصورة ليكون مناسباً */
+            max-width: 250px; /* الحد الأقصى لحجم الصورة */
+            height: auto; /* الارتفاع يتناسب مع العرض */
+            margin-bottom: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ظل خفيف للصورة */
+        }
+
+        /* تنسيق قسم التعليقات */
+        .comments-section {
+            padding: 40px 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+            border: 1px solid #ddd; /* حدود رفيعة للصندوق */
+            margin: 20px;
+            border-radius: 10px; /* زوايا مستديرة للصندوق */
+        }
+
+        .comment-form {
+            margin-bottom: 20px;
+        }
+
+        .comment-list {
+            display: flex;
+            flex-wrap: wrap; /* التفاف العناصر إذا لم يكن هناك مساحة كافية */
+            list-style: none;
+            padding: 0;
+            justify-content: center; /* توسيط العناصر */
+        }
+
+        .comment-item {
+            background-color: #fff9e6; /* لون خلفية جميل ومميز */
+            border: 1px solid #ffd700; /* لون حدود ذهبي */
+            width: 200px; /* عرض الصندوق */
+            height: 100px; /* ارتفاع الصندوق */
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left; /* تنسيق النص إلى اليسار */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* توزيع العناصر بشكل متساوي */
+            position: relative;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff4d4d;
+            border: none;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* تنسيق العناوين */
+        h1, h2, h3 {
+            color: #0a008f;
+        }
+
+        /* تنسيق النص */
+        p {
+            color: #000000;
+            line-height: 1.6;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        /* استجابة الشاشات الأصغر */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: auto;
+            }
+
+            .hero-section img {
+                width: 100%;
+                height: auto;
+            }
+
+            .client {
+                width: calc(50% - 40px); /* عرض 50% لكل عميل مع الأخذ بالاعتبار الهوامش */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                height: auto;
+            }
+
+            .hero-section img {
+                width: 100%;
+                height: auto;
+            }
+
+            .client {
+                width: calc(100% - 40px); /* عرض 100% لكل عميل مع الأخذ بالاعتبار الهوامش */
+            }
+        }
+     </style>
+    <script>
+        var isLoggedIn = true; // مثال على حالة تسجيل الدخول
+
+        function addComment() {
+            if (!isLoggedIn) {
+                alert('يجب تسجيل الدخول لإضافة تعليق.');
+                return;
+            }
+
+            var commentInput = document.getElementById('comment-input');
+            var commentList = document.getElementById('comment-list');
+            var commentAuthor = 'اسم المستخدم'; // اسم المستخدم المسجل دخوله
+
+            var newComment = document.createElement('li');
+            newComment.className = 'comment-item';
+            
+            var authorElement = document.createElement('div');
+            authorElement.className = 'comment-author';
+            authorElement.innerText = commentAuthor;
+            
+            var textElement = document.createElement('div');
+            textElement.innerText = commentInput.value;
+
+            var deleteButton = document.createElement('button');
+            deleteButton.className = 'delete-button';
+            deleteButton.innerText = 'حذف';
+            deleteButton.onclick = function() {
+                newComment.remove();
+                saveComments();
+            };
+
+            newComment.appendChild(authorElement);
+            newComment.appendChild(textElement);
+            newComment.appendChild(deleteButton);
+            commentList.appendChild(newComment);
+
+            // حفظ التعليق في localStorage
+            saveComments();
+
+            commentInput.value = ''; // مسح النص في الحقل
+        }
+
+        function saveComments() {
+            var commentList = document.getElementById('comment-list');
+            var comments = [];
+            for (var i = 0; i < commentList.children.length; i++) {
+                var commentItem = commentList.children[i];
+                var author = commentItem.querySelector('.comment-author').innerText;
+                var text = commentItem.querySelector('div').innerText;
+                comments.push({author: author, text: text});
+            }
+            localStorage.setItem('comments', JSON.stringify(comments));
+        }
+
+        // تحميل التعليقات من localStorage عند تحميل الصفحة
+        window.onload = function() {
+            var commentList = document.getElementById('comment-list');
+            var comments = JSON.parse(localStorage.getItem('comments')) || [];
+            comments.forEach(function(comment) {
+                var newComment = document.createElement('li');
+                newComment.className = 'comment-item';
+
+                var authorElement = document.createElement('div');
+                authorElement.className = 'comment-author';
+                authorElement.innerText = comment.author;
+
+                var textElement = document.createElement('div');
+                textElement.innerText = comment.text;
+
+                var deleteButton = document.createElement('button');
+                deleteButton.className = 'delete-button';
+                deleteButton.innerText = 'حذف';
+                deleteButton.onclick = function() {
+                    newComment.remove();
+                    saveComments();
+                };
+
+                newComment.appendChild(authorElement);
+                newComment.appendChild(textElement);
+                newComment.appendChild(deleteButton);
+                commentList.appendChild(newComment);
+            });
+        };
+    </script>
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="imges/mainLogo.png" alt="شعار الموقع">
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.html">الرئيسية</a></li>
+            <li><a href="products.html">منتجاتنا</a></li>
+            <li><a href="detealsAboutBacks.html">تفاصيل الحزم</a></li>
+            <li><a href="contactPage.html">تواصل معنا</a></li>
+            <li><a href="activiteys.html">الأنشطة والميزات</a></li>
+            <li><a href="BookingPage.html">تفاصيل المرافق</a></li>
+            <li><a href="aboutUs.html">نبذه عنا</a></li>
+        </ul>
+    </nav>
+    <!-- خانة تكبير وتصغير الخط -->
+    <div class="font-size-control">
+        <button onclick="changeFontSize(true)">+</button>
+        <button onclick="changeFontSize(false)">-</button>
+    </div>
+        <!-- زر قراءة النص بصوت عالٍ -->
+<div style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; align-items: center;">
+    <button onclick="speakSelectedText()" style="padding: 10px 20px; font-size: 16px; margin-bottom: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">اقرأ النص بصوت عالٍ</button>
+    <button onclick="stopText()" style="padding: 10px 20px; font-size: 16px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">إيقاف القراءة</button>
+</div>
+
+<script>
+    /**
+     * قراءة النص المحدد بصوت عالٍ
+     */
+    function speakSelectedText() {
+        if ('speechSynthesis' in window) {
+            var selectedText = window.getSelection().toString();
+            if (selectedText) {
+                var utterance = new SpeechSynthesisUtterance(selectedText);
+                // الكشف عن اللغة واختيار اللغة المناسبة
+                var lang = /[\u0600-\u06FF]/.test(selectedText) ? 'ar' : 'en';
+                utterance.lang = lang;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('يرجى تحديد النص الذي تريد قراءته.');
+            }
+        } else {
+            alert('متصفحك لا يدعم خاصية تحويل النص إلى كلام.');
+        }
+    }
+
+    /**
+     * إيقاف قراءة النص بصوت عالٍ
+     */
+    function stopText() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+</script>
+
+    <!-- قسم البطل -->
+    <section class="hero-section">
+        <!-- يمكن إضافة محتوى إضافي هنا إذا لزم الأمر -->
+    </section>
+  <!-- خانة تكبير وتصغير الخط -->
+  <div class="font-size-control">
+    <button onclick="changeFontSize(true)">+</button>
+    <button onclick="changeFontSize(false)">-</button>
+</div>
+    <!-- قسم الرؤية والرسالة -->
+    <section class="vision-mission-section">
+        <h2>رؤيتنا ورسالتنا</h2>
+        <p>نحن نسعى جاهدين لتقديم أفضل تجربة لعملائنا من خلال توفير خدمات راقية ومميزة. رؤيتنا هي أن نصبح الوجهة المفضلة للسياحة والاسترخاء، حيث يمكن للزوار الاستمتاع بإقامة مريحة وتجارب طعام استثنائية. رسالتنا هي تقديم خدمات عالية الجودة تتجاوز توقعات عملائنا، وتعزيز مكانتنا كرواد في مجال الفندقة والضيافة.</p>
+    </section>
+
+    <!-- قسم العملاء المتميزين -->
+    <section class="clients-section">
+        <h2>عملاؤنا المتميزون</h2>
+        <div class="clients">
+            <div class="client">
+                <img src="imges/crion1.jpg" alt="Leonardo DiCaprio">
+                <div class="client-info">
+                    <h3>Leonardo DiCaprio</h3>
+                    <p>الممثل الأمريكي الأسطوري والحائز على جائزة الأوسكار. تعامل معنا منذ عامين وقد أعرب عن إعجابه بالخدمات الفاخرة والتجارب الفريدة التي نقدمها. دائمًا ما يجد وقتًا للاسترخاء في فندقنا بعد مشاغل هوليوود.</p>
+                </div>
+            </div>
+
+            <div class="client">
+                <img src="imges/crion2.webp" alt="David Beckham">
+                <div class="client-info">
+                    <h3>David Beckham</h3>
+                    <p>أسطورة كرة القدم الإنجليزية وأيقونة الموضة العالمية. استمتع بالإقامة لدينا منذ عامين، واستفاد من خدماتنا الفاخرة وعروضنا المميزة. تجده دائمًا يستمتع بوقته في ملاعب الجولف لدينا بين جولاته الرياضية والمناسبات الاجتماعية.</p>
+                </div>
+            </div>
+
+            <div class="client">
+                <img src="imges/crion3.webp" alt="Scarlett Johansson">
+                <div class="client-info">
+                    <h3>Scarlett Johansson</h3>
+                    <p>الممثلة الأمريكية البارعة والمرشحة لجوائز عديدة. تعاملت معنا منذ عامين، وكانت دائماً متألقة في فعالياتنا. تعشق الأجواء الراقية التي نوفرها، وتجد في مطاعمنا متعة تذوق أطيب الأطباق العالمية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        /**
+         * تغيير حجم الخط على النصوص في صفحة الويب
+         * @param {boolean} increase - إذا كان true، يتم تكبير حجم النصوص، إذا كان false، يتم تصغير حجم النصوص
+         */
+        function changeFontSize(increase) {
+            var elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li, span'); // اختيار العناصر النصية فقط
+            elements.forEach(function(element) {
+                var currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+
+                // التحقق من قيمة الزيادة أو النقصان وتعديل حجم النصوص وفقًا لذلك
+                if (increase) {
+                    element.style.fontSize = (currentSize + 1) + 'px';
+                } else {
+                    element.style.fontSize = (currentSize - 1) + 'px';
+                }
+            });
+        }
+    </script>
+
+    <!-- قسم التعليقات -->
+    <section class="comments-section">
+        <h2>تعليقات المستخدمين</h2>
+        <div class="comment-form">
+            <input type="text" id="comment-input" placeholder="اكتب تعليقك هنا...">
+            <button onclick="addComment()">إرسال</button>
+        </div>
+        <ul id="comment-list" class="comment-list">
+            <!-- ستظهر التعليقات هنا -->
+        </ul>
+    </section>
+<!-- قسم التذييل -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-info">
+            <p>الموقع: البرتغال</p>
+            <p>حقوق النشر والطباعة &copy; 2025 جميع الحقوق محفوظة</p>
+            <p>رقم الهاتف: +962-6-1234567</p>
+            <p>تم تطوير هذا الموقع من قبل : أحلام عنانزة</p>
+        </div>
+        <div class="footer-links">
+            <a href="#contact">المساعدة</a>
+            <a href="#contact">اتصل بنا</a>
+            <a href="#aboutUs">سياسة الخصوصية</a>
+        </div>
+    </div>     
+</footer>
+<script>
+    /**
+     * تغيير حجم الخط على النصوص في صفحة الويب
+     * @param {boolean} increase - إذا كان true، يتم تكبير حجم النصوص، إذا كان false، يتم تصغير حجم النصوص
+     */
+    function changeFontSize(increase) {
+        var elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li, span'); // اختيار العناصر النصية فقط
+        elements.forEach(function(element) {
+            var currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+
+            // التحقق من قيمة الزيادة أو النقصان وتعديل حجم النصوص وفقًا لذلك
+            if (increase) {
+                element.style.fontSize = (currentSize + 1) + 'px';
+            } else {
+                element.style.fontSize = (currentSize - 1) + 'px';
+            }
+        });
+    }
+</script>
+</body>
+</html>
+

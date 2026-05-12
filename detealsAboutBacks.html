@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الحزم</title>
+    <!-- ربط ملف CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+/* تنسيق قسم عرض الصور */
+.product-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 40px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.image-gallery {
+    flex: 1;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* مركز الصورة في العمودي */
+}
+
+.main-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    max-width: 350px;
+    max-height: 350px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.main-image:hover {
+    transform: scale(1.05);
+}
+
+.thumbnails {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.thumbnail {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: 2px solid #0c047a;
+    border-radius: 5px;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.thumbnail:hover {
+    border-color: #04146d;
+    transform: scale(1.1);
+}
+
+.product-info {
+    flex: 1;
+    text-align: right;
+}
+
+.product-info h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #04125f;
+    text-align: right;
+    font-size: 40px;
+}
+
+.product-info p {
+    font-size: 1rem;
+    color: #000000;
+    line-height: 1.5;
+    text-align: right;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.contact-button {
+    padding: 10px 20px;
+    background-color: #04125f;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+    background-color: #000000;
+}
+
+@media (max-width: 768px) {
+    .product-display {
+        flex-direction: column;
+    }
+    .main-image, .thumbnail {
+        width: 100%;
+        height: auto;
+    }
+    .thumbnail {
+        max-width: 150px;
+        max-height: 150px;
+    }
+}
+</style>
+
+<body>
+    <!-- رأس الصفحة -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src=" imges/mainLogo.png" alt="شعار الموقع">
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.html">الرئيسية</a></li>
+            <li><a href="products.html">منتجاتنا</a></li>
+            <li><a href="detealsAboutBacks.html">تفاصيل الحزم</a></li>
+            <li><a href="contactPage.html">تواصل معنا</a></li>
+            <li><a href="activiteys.html">الأنشطة والميزات</a></li>
+            <li><a href="BookingPage.html">تفاصيل المرافق</a></li>
+            <li><a href="aboutUs.html">نبذه عنا</a></li>
+        </ul>
+    </nav>
+    <h1 class="page-title">الحزم المقدمة لهذا العام</h1>
+     <!-- خانة تكبير وتصغير الخط -->
+     <div class="font-size-control">
+        <button onclick="changeFontSize(true)">+</button>
+        <button onclick="changeFontSize(false)">-</button>
+    </div>
+    <!-- زر قراءة النص بصوت عالٍ -->
+    <div style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; align-items: center;">
+        <button onclick="speakSelectedText()" style="padding: 10px 20px; font-size: 16px; margin-bottom: 10px; background-color: #00268f; color: white; border: none; border-radius: 5px; cursor: pointer;">اقرأ النص بصوت عالٍ</button>
+        <button onclick="stopText()" style="padding: 10px 20px; font-size: 16px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">إيقاف القراءة</button>
+    </div>
+<!-- قسم عرض الصور الأول -->
+<section class="product-display">
+    <div class="image-gallery">
+        <img id="mainImage1" src="imges/coffiesAndHotels.png" alt="صورة الحزمة" class="main-image">
+        <div class="thumbnails">
+            <img onclick="changeImage('mainImage1', 'imges/VIProom.avif')" src="imges/VIProom.avif" alt="صورة مصغرة 1" class="thumbnail">
+            <img onclick="changeImage('mainImage1', 'imges/MONTAJAAfAKHER.jfif')" src="imges/MONTAJAAfAKHER.jfif" alt="صورة مصغرة 2" class="thumbnail">
+            <img onclick="changeImage('mainImage1', 'imges/GOLFpLAICE.jfif')" src="imges/GOLFpLAICE.jfif" alt="صورة مصغرة 3" class="thumbnail">
+        </div>
+    </div>
+    <div class="product-info">
+        <h1>حزمة الخمس جولات</h1>
+        <p>شرح الحزمة 1: استمتع بأفضل التجارب مع حزمنا المميزة. نقدم لكم تجربة لا تُنسى تجمع بين الرفاهية والمغامرة. ,<br> تضم الحزمة المزايا التالية وهي: 
+            <br> <ul style="direction: rtl;"> 
+            <li> إقامة كاملة لمدة خمس ليالي في جناح فاخر</li>
+            <li> خمس جولات في 18 حفرة </li>
+            <li> جولة واحدة مظمونة في ملعب (See View) </li>
+            <li>   جلسة تدريب رقمي مجامية.   </li>
+
+        </ul></p>
+    </div>
+</section>
+
+
+
+
+  <!-- قسم عرض الصور الثاني -->
+<section class="product-display">
+    <div class="image-gallery">
+        <img id="mainImage2" src="imges/MOZDAWAJroom.jfif" alt="صورة الحزمة" class="main-image">
+        <div class="thumbnails">
+            <img onclick="changeImage('mainImage2', 'imges/jawlatGolf.jfif')" src="imges/jawlatGolf.jfif" alt="صورة مصغرة 1" class="thumbnail">
+            <img onclick="changeImage('mainImage2', 'imges/GOLFpLAICE.jfif')" src="imges/GOLFpLAICE.jfif" alt="صورة مصغرة 2" class="thumbnail">
+            <img onclick="changeImage('mainImage2', 'imges/discount.jfif')" src="imges/discount.jfif" alt="صورة مصغرة 3" class="thumbnail">
+        </div>
+    </div>
+    <div class="product-info">
+        <h1>Triple Tee</h1>
+        <p>شرح الحزمة : استمتع بأفضل التجارب مع حزمنا المميزة. نقدم لكم تجربة لا تُنسى تجمع بين الرفاهية والمغامرة. ,<br> تضم الحزمة المزايا التالية وهي: 
+            <br> <ul style="direction: rtl;"> 
+            <li>إقامة لمدة ليلتين في غرفة مزدوجة مع وجبة الإفطار</li>
+            <li>    ثلاث جولات  جولات _18 حفرة,  تشمل خوض جولة واحدة في ملعب ( Sea View) الشهير ان وجدت </li>
+            <li> تأجير مجاني للعربات</li>
+            <li> خصم 20 % لمتجر المحترفين  </li>
+
+        </ul></p>
+    </div>
+</section>
+
+    <!-- قسم عرض الصور الثالث -->
+    <section class="product-display">
+        <div class="image-gallery">
+            <img id="mainImage3" src="imges\braeckfast.jfif" alt="صورة الحزمة" class="main-image">
+            <div class="thumbnails">
+                <img onclick="changeImage('mainImage3', 'imges/resturent2.jfif')" src="imges/resturent2.jfif" alt="صورة مصغرة 1" class="thumbnail">
+                <img onclick="changeImage('mainImage3', 'imges/gym.jfif')" src="imges/gym.jfif" alt="صورة مصغرة 2" class="thumbnail">
+                <img onclick="changeImage('mainImage3', 'imges/playGolf.avif')" src="imges/playGolf.avif" alt="صورة مصغرة 3" class="thumbnail">
+            </div>
+        </div>
+        <div class="product-info">
+            <h1>  استراحة واستجمام</h1>
+            <p>  الستراحة واستجمام : استمتع بأفضل التجارب مع حزمنا المميزة. نقدم لكم تجربة لا تُنسى تجمع بين الرفاهية والمغامرة. ,<br> تضم الحزمة المزايا التالية وهي: 
+                <br> <ul style="direction: rtl;"> 
+                <li> إقامة ليلة واحدة مع وجبة افطار كاملة.</li>
+                <li> الوصول إلى الملاعب (تطبق الرسوم ويستبعد ملعب (Sea view)) </li>
+                <li> جولة واحدة مظمونة في ملعب (See View) </li>
+                <li>تأجير نادي مجاني   </li>
+    
+            </ul></p>
+        </div>
+    </section>
+    <!-- قسم عرض الصور الرابع -->
+    <section class="product-display">  
+        <div class="image-gallery">
+            <img id="mainImage4" src="imges\malaab3.jfif" alt="صورة الحزمة" class="main-image">
+            <div class="thumbnails">
+                <img onclick="changeImage('mainImage4', 'imges/resturent4.jfif')" src="imges/resturent4.jfif" alt="صورة مصغرة 1" class="thumbnail">
+                <img onclick="changeImage('mainImage4', 'imges/gym4.jfif')" src="imges/gym4.jfif" alt="صورة مصغرة 2" class="thumbnail">
+                <img onclick="changeImage('mainImage4', 'imges/vipHotel.jfif')" src="imges/vipHotel.jfif" alt="صورة مصغرة 3" class="thumbnail">
+            </div>
+        </div>
+        <div class="product-info">
+            <h1>حزمة مخصصة</h1>
+            <p>الحزمة المخصصة: استمتع بأفضل التجارب مع حزمنا المميزة. نقدم لكم تجربة لا تُنسى تجمع بين الرفاهية والمغامرة. يلزمك الاتصال بموقعنا من أجل الاتفاق على الحجز</p>
+            <div class="button-container">
+                <button class="contact-button" onclick="location.href=' contactPage.html'">اتصل بنا</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // تغيير الصورة الرئيسية
+        function changeImage(imageId, src) {
+            document.getElementById(imageId).src = src;
+        }
+    </script>
+     <script>
+        /**
+         * تغيير حجم الخط على النصوص في صفحة الويب
+         * @param {boolean} increase - إذا كان true، يتم تكبير حجم النصوص، إذا كان false، يتم تصغير حجم النصوص
+         */
+        function changeFontSize(increase) {
+            var elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li, span'); // اختيار العناصر النصية فقط
+            elements.forEach(function(element) {
+                var currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+
+                // التحقق من قيمة الزيادة أو النقصان وتعديل حجم النصوص وفقًا لذلك
+                if (increase) {
+                    element.style.fontSize = (currentSize + 1) + 'px';
+                } else {
+                    element.style.fontSize = (currentSize - 1) + 'px';
+                }
+            });
+        }
+    </script>
+
+     <!-- قسم التذييل -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-info">
+            <p>الموقع: البرتغال</p>
+            <p>حقوق النشر والطباعة &copy; 2025 جميع الحقوق محفوظة</p>
+            <p>رقم الهاتف: +962-6-1234567</p>
+            <p>تم تطوير هذا الموقع من قبل : أحلام عنانزة</p>
+
+        </div>
+        <div class="footer-links">
+            <a href="#contact">المساعدة</a>
+            <a href="#contact">اتصل بنا</a>
+            <a href="#aboutUs">سياسة الخصوصية</a>
+        </div>
+    </div>     
+</footer>
+<script>
+    /**
+     * قراءة النص المحدد بصوت عالٍ
+     */
+    function speakSelectedText() {
+        if ('speechSynthesis' in window) {
+            var selectedText = window.getSelection().toString();
+            if (selectedText) {
+                var utterance = new SpeechSynthesisUtterance(selectedText);
+                // الكشف عن اللغة واختيار اللغة المناسبة
+                var lang = /[\u0600-\u06FF]/.test(selectedText) ? 'ar' : 'en';
+                utterance.lang = lang;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('يرجى تحديد النص الذي تريد قراءته.');
+            }
+        } else {
+            alert('متصفحك لا يدعم خاصية تحويل النص إلى كلام.');
+        }
+    }
+
+    /**
+     * إيقاف قراءة النص بصوت عالٍ
+     */
+    function stopText() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+</script>
+</body>
+</html>

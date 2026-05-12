@@ -1,0 +1,426 @@
+/* تنسيق الجسم */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* تنسيق الحاوية الرئيسية */
+.container {
+    flex: 1;
+}
+
+/* تنسيق شريط التنقل */
+.navbar {
+    width: 100%;
+    overflow: hidden;
+    position: fixed; /* تثبيت شريط التنقل في أعلى الصفحة */
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px; /* زيادة الحشوة لإبراز الشريط */
+    background-color: #04146d63; /* لون خلفية كحلي */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+    z-index: 1000;
+}
+
+/* تنسيق الشعار */
+.logo {
+    margin-right: auto; /* وضع الشعار على الجهة اليسرى */
+}
+.logo img {
+    width: 80px; /* عرض الشعار أصغر */
+    height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    display: block;
+    border-radius: 10px; /* حواف دائرية أكبر */
+}
+
+/* تنسيق الروابط داخل شريط التنقل */
+.nav-links {
+    list-style-type: none; /* إزالة النقاط */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end; /* محاذاة الروابط إلى اليمين */
+    flex-grow: 1;
+}
+.nav-links li {
+    display: inline; /* ترتيب الروابط أفقياً */
+}
+.nav-links a {
+    display: block;
+    color: rgb(255, 255, 255); /* لون النص */
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px; /* زيادة الحشوة */
+    text-decoration: none;
+    font-size: 16px; /* تصغير الخط */
+    margin-left: 5px; /* تقليل المسافة بين الروابط */
+    transition: color 0.3s ease; /* تأثير حركي للون النص */
+}
+.nav-links a:hover {
+    color: #ffc403; /* تغيير لون النص عند المرور */
+}
+
+/* تنسيق العنوان */
+.page-title {
+    text-align: center; /* محاذاة النص إلى المنتصف */
+    color: #0415a5; /* اللون الكحلي */
+    margin-top: 120px; /* زيادة الهامش العلوي */
+    margin-bottom: 20px; /* هامش سفلي */
+    font-size: 50px;
+}
+
+/* تنسيق خانة تكبير وتصغير الخط */
+.font-size-control {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #051679;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.font-size-control button {
+    color: #fff;
+    background-color: #051679;
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.font-size-control button:hover {
+    background-color: #04146d;
+}
+
+/* تنسيق قسم الميزات */
+.features {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.features .section-title {
+    font-size: 36px;
+    color: #0415a5;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.features .feature-item {
+    display: inline-block;
+    width: 15%; /* تصغير حجم الميزة */
+    margin: 10px 5px; /* مسافة بسيطة بين الميزات */
+    background-color: #ffffff;
+    padding: 15px; /* تقليل الحشوة */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    vertical-align: top; /* ضمان الترتيب بجانب بعض */
+}
+
+.features .feature-item:hover {
+    transform: scale(1.05); /* تكبير العنصر قليلاً عند التأشير */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background-color: #ffc40362; /* تغيير لون الخلفية عند التأشير */
+}
+
+.features .feature-item img {
+    width: 80%; /* تصغير حجم الصورة */
+    border-radius: 8px;
+}
+
+.features .feature-item h3 {
+    color: #0415a5;
+    margin: 10px 0; /* تعديل الهوامش */
+}
+
+.features .feature-item p {
+    color: #333;
+    margin-bottom: 10px; /* إضافة هامش سفلي */
+}
+
+.features .btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px; /* تقليل الحشوة */
+    background-color: #0415a5;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.features .btn:hover {
+    background-color: #0c0074;
+    transform: scale(1.1); /* تكبير الزر عند التأشير */
+}
+/* تنسيق قسم المعرض */
+.gallery {
+    text-align: center;
+    margin: 20px 0;
+    background-color: #e0f7e9; /* لون خلفية مشابه للعشب الأخضر */
+    padding: 20px;
+    border-radius: 20px; /* حواف دائرية */
+}
+
+.gallery-title {
+    font-size: 36px;
+    color: #2c5f2d; /* لون العنوان مشابه للعشب الأخضر */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.gallery .gallery-item {
+    display: inline-block;
+    width: 18%; /* عرض جديد للخانات */
+    margin: 10px; /* مسافة بسيطة بين الخانات */
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px; /* حواف دائرية لطيفة */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    vertical-align: top; /* لضمان أن العناصر بجانب بعضها البعض */
+}
+
+.gallery .gallery-item:hover {
+    transform: scale(1.05); /* تكبير العنصر قليلاً عند التأشير */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background-color: #d4edda; /* تغيير لون الخلفية عند التأشير */
+}
+
+.gallery .gallery-item img {
+    width: 100%;
+    border-radius: 10px; /* حواف دائرية للصور */
+}
+
+.gallery .gallery-item p {
+    color: #333;
+    margin: 10px 0;
+}
+
+.gallery .btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #2c5f2d; /* لون الزر مشابه للعشب الأخضر */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.gallery .btn:hover {
+    background-color: #1e421c; /* لون الزر عند التأشير */
+    transform: scale(1.1); /* تكبير الزر عند التأشير */
+}
+
+/* استعلامات الوسائط لجعل التنسيق متجاوبًا */
+@media (max-width: 768px) {
+    .gallery .gallery-item {
+        width: 45%; /* عرض الخانات في الشاشات الصغيرة */
+        margin-bottom: 20px; /* مسافة بين الخانات في الشاشات الصغيرة */
+    }
+}
+
+/* تنسيق قسم الشهادات */
+.testimonials {
+    text-align: center;
+    background-color: #f8f9fa; /* لون خلفية فاتح */
+    padding: 50px 20px;
+    margin: 20px 0;
+}
+
+.testimonials h2 {
+    font-size: 36px;
+    color: #28a745; /* لون أخضر مميز */
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.testimonials .testimonial-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px; /* مسافة بين العناصر */
+    justify-items: center; /* توسيط العناصر أفقيا */
+}
+
+.testimonial-item {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 50%; /* جعل العناصر دائرية */
+    width: 220px;
+    height: 220px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.testimonial-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #e9f5ea; /* لون أخضر فاتح عند التأشير */
+}
+
+.testimonial-item img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%; /* جعل الصورة دائرية */
+    margin-bottom: 10px;
+    border: 2px solid #28a745; /* إطار أخضر */
+}
+
+.testimonial-item p {
+    color: #6c757d; /* لون رمادي للنص */
+    font-size: 14px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.testimonial-item h4 {
+    color: #28a745; /* لون أخضر */
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* تنسيق قسم المدونة */
+.blog {
+    text-align: center;
+    background-color: #f4f4f4;
+    padding: 40px 20px;
+    margin: 20px 0;
+}
+.blog h2 {
+    font-size: 36px;
+    color: #0415a5;
+    margin-bottom: 40px; /* زيادة المسافة بين العنوان والمقالات */
+}
+.blog-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* يتيح التفاف العناصر في حال عدم توفر مساحة كافية */
+}
+.blog-item {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 45%; /* تقليل عدد المقالات */
+    flex: 0 0 45%; /* ضمان أن كل عنصر يأخذ 45% من العرض الكلي */
+    box-sizing: border-box; /* حساب الحشوات ضمن العرض */
+    vertical-align: top;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.blog-item:hover {
+    transform: scale(1.05); /* تكبير العنصر قليلاً عند التأشير */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.blog-item h3 {
+    color: #0415a5;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.blog-item p {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 15px; /* إضافة هامش سفلي */
+}
+.blog-item .btn {
+    padding: 10px 20px; /* زيادة حجم الحشوة */
+}
+
+/* أزرار الوسائل الاجتماعية */
+.social-media {
+    text-align: center;
+    margin: 20px 0;
+}
+.social-media a {
+    margin: 0 10px;
+    display: inline-block;
+}
+.social-media img {
+    width: 40px;
+    height: 40px;
+}
+
+/* تنسيق قسم التذييل */
+.footer {
+    background-color: rgba(5, 22, 121, 0.8); /* لون الخلفية كحلي شفاف قليلاً */
+    color: #fff; /* لون النص أبيض */
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    direction: rtl; /* الكتابة من اليمين لليسار */
+    margin-top: 20px; /* مسافة بسيطة بين التذييل والعناصر الأخرى */
+}
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.footer-info p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+.footer-links {
+    margin-top: 10px;
+    display: flex;
+    gap: 15px; /* المسافة بين الروابط */
+    justify-content: center; /* الروابط في المنتصف */
+}
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* استعلامات الوسائط لجعل التنسيق متجاوبًا */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav-links a {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+    .features .feature-item, .gallery .gallery-item {
+        width: 48%; /* العرض الجديد للأقسام في الشاشات الصغيرة */
+        margin-bottom: 20px;
+    }
+    .font-size-control {
+        left: auto;
+        right: 0;
+        transform: translateY(-50%);
+    }
+    .page-title {
+        font-size: 35px;
+        margin-top: 100px;
+    }
+    .section-title, .gallery-title {
+        font-size: 28px; /* تصغير الخط للعناوين */
+    }
+}
+

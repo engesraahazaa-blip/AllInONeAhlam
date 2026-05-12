@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact page</title>
+    <!-- ربط ملف CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* خلفية الصفحة */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* تنسيق قسم البطل */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background-image: url('imges/contact11.png'); /* تحقق من أن مسار الصورة صحيح */
+            background-size: cover; /* تكبير الصورة لتحتوي واجهة المستخدم بالكامل */
+            background-position: center;
+            background-repeat: no-repeat; /* منع تكرار الصورة */
+            margin-bottom: 20px; /* إضافة هامش سفلي بمقدار 20px */
+        }
+
+        /* CSS لتنسيق الأيقونات والنصوص */
+        .social-media {
+            position: fixed;
+            top: 40%;
+            left: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* لضمان ترتيب النصوص على الجانب الأيمن من الأيقونات */
+            margin-top: 100px;
+        }
+
+        .social-media a {
+            text-decoration: none;
+            color: #000a66;
+            font-size: 2.2rem;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px; /* زيادة المسافة بين الروابط */
+        }
+
+        .social-media .icon {
+            width: 70px; /* زيادة حجم الأيقونة */
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            border: 2px solid #0c047a;
+            margin-right: 15px; /* زيادة المسافة بين الأيقونة والنص */
+            transition: transform 0.3s;
+        }
+
+        .social-media .icon:hover {
+            transform: scale(1.2); /* تكبير الأيقونة عند التفاعل */
+        }
+
+        /* CSS لتنسيق نموذج تسجيل الدخول */
+        .login-form-container {
+            flex: 1;
+            display: flex;
+            justify-content: center; /* يتم محاذاة النموذج في الوسط */
+            align-items: center; /* يتم محاذاة النموذج عموديًا في الوسط */
+            padding: 20px;
+        }
+
+        .login-form {
+            background-color: rgba(216, 210, 210, 0.705);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px; /* حجم متوسط للنموذج */
+        }
+
+        .login-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-form input {
+            display: block;
+            width: 100%; /* تعديل العرض ليكون ملائما */
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #060058;
+            border-radius: 5px;
+        }
+
+        .login-form button {
+            display: block;
+            width: 98%;
+            padding: 10px;
+            background-color: #0c047a;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-form button:hover {
+            background-color: #000;
+        }
+
+        /* رسالة الخطأ */
+        #error-message {
+            color: red;
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* استعلامات الوسائط لجعل التنسيق متجاوبًا */
+        @media (max-width: 768px) {
+            .social-media {
+                left: 10px; /* تعديل المسافة للأيقونات */
+                top: 30%;
+            }
+            .social-media a {
+                font-size: 1.8rem; /* تقليل حجم النصوص */
+            }
+            .login-form {
+                width: 90%; /* توسيع النموذج على الشاشات الصغيرة */
+                margin-top: 20px; /* تعديل المسافة من الأعلى */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="imges/mainLogo.png" alt="شعار الموقع">
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.html">الرئيسية</a></li>
+            <li><a href="products.html">منتجاتنا</a></li>
+            <li><a href="detealsAboutBacks.html">تفاصيل الحزم</a></li>
+            <li><a href="contactPage.html">تواصل معنا</a></li>
+            <li><a href="activiteys.html">الأنشطة والميزات</a></li>
+            <li><a href="BookingPage.html">تفاصيل المرافق</a></li>
+            <li><a href="aboutUs.html">نبذه عنا</a></li>
+        </ul>
+    </nav>
+    
+    <h1 class="page-title">التواصل</h1>
+
+    <!-- خانة تكبير وتصغير الخط -->
+    <div class="font-size-control">
+        <button onclick="changeFontSize(true)">+</button>
+        <button onclick="changeFontSize(false)">-</button>
+    </div>
+<!-- زر قراءة النص بصوت عالٍ -->
+<div style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; align-items: center;">
+    <button onclick="speakSelectedText()" style="padding: 10px 20px; font-size: 16px; margin-bottom: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">اقرأ النص بصوت عالٍ</button>
+    <button onclick="stopText()" style="padding: 10px 20px; font-size: 16px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">إيقاف القراءة</button>
+</div>
+
+<script>
+    /**
+     * قراءة النص المحدد بصوت عالٍ
+     */
+    function speakSelectedText() {
+        if ('speechSynthesis' in window) {
+            var selectedText = window.getSelection().toString();
+            if (selectedText) {
+                var utterance = new SpeechSynthesisUtterance(selectedText);
+                // الكشف عن اللغة واختيار اللغة المناسبة
+                var lang = /[\u0600-\u06FF]/.test(selectedText) ? 'ar' : 'en';
+                utterance.lang = lang;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('يرجى تحديد النص الذي تريد قراءته.');
+            }
+        } else {
+            alert('متصفحك لا يدعم خاصية تحويل النص إلى كلام.');
+        }
+    }
+
+    /**
+     * إيقاف قراءة النص بصوت عالٍ
+     */
+    function stopText() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+</script>
+
+    <!-- HTML للأيقونات والنصوص -->
+    <div class="social-media">
+        <a href="https://www.linkedin.com/" target="_blank">
+            <div class="icon">
+                <img src="imges/social_12942307.png" alt="LinkedIn" width="40">
+            </div>
+            LinkedIn
+        </a>
+        <a href="https://www.instagram.com/" target="_blank">
+            <div class="icon">
+                <img src="imges/instagram_2111463.png" alt="Instagram" width="40">
+            </div>
+            Instagram
+        </a>
+        <a href="https://www.facebook.com/" target="_blank">
+            <div class="icon">
+                <img src="imges/facebook_5968764.png" alt="Facebook" width="40">
+            </div>
+            Facebook
+        </a>
+        <a href="https://twitter.com/" target="_blank">
+            <div class="icon">
+                <img src="imges/twitter_5969020.png" alt="Twitter" width="40">
+            </div>
+            Twitter
+        </a>
+        <a href="https://www.snapchat.com/" target="_blank">
+            <div class="icon">
+                <img src="imges/logo_15713438.png" alt="Snapchat" width="40">
+            </div>
+            Snapchat
+        </a>
+    </div>
+
+    <!-- نموذج تسجيل الدخول -->
+    <div class="login-form-container">
+        <div class="login-form">
+            <h2>تسجيل الدخول</h2>
+            <form id="loginForm">
+                <input type="text" id="name" name="name" placeholder="الاسم" required>
+                <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" required>
+                <input type="password" id="password" name="password" placeholder="كلمة المرور" required>
+                <input type="number" id="age" name="age" placeholder="العمر" required>
+                <button type="submit">تسجيل</button>
+            </form>
+            <p id="error-message" style="color: red; display: none;">العمر يجب أن يكون أكبر من 15 عاماً وكلمة المرور يجب أن تكون صحيحة.</p>
+        </div>
+    </div>
+
+    <script>
+        // إضافة مستمع للحدث 'submit' لنموذج تسجيل الدخول
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // منع الإجراء الافتراضي لإرسال النموذج
+
+            const age = parseInt(document.getElementById('age').value, 10); // الحصول على قيمة العمر وتحويلها إلى عدد صحيح
+            const password = document.getElementById('password').value; // الحصول على قيمة كلمة المرور من الحقل
+            const correctPassword = "password123"; // استبدل هذا بكلمة المرور الصحيحة
+
+            let errorMessage = ''; // متغير لتخزين رسالة الخطأ
+
+            // التحقق من عمر المستخدم
+            if (age <= 15) {
+                errorMessage += 'العمر يجب أن يكون أكبر من 15 عاماً. ';
+            }
+
+            // التحقق من صحة كلمة المرور
+            if (password !== correctPassword) {
+                errorMessage += 'كلمة المرور يجب أن تكون صحيحة.';
+            }
+
+            // عرض رسالة الخطأ إذا كانت هناك أخطاء، وإخفائها إذا لم تكن هناك أخطاء
+            if (errorMessage) {
+                document.getElementById('error-message').innerText = errorMessage;
+                document.getElementById('error-message').style.display = 'block';
+            } else {
+                document.getElementById('error-message').style.display = 'none';
+                // تابع العمليات الأخرى للتسجيل هنا
+                alert('تم التسجيل بنجاح!');
+            }
+        });
+    </script>
+
+    <script>
+        /**
+         * تغيير حجم الخط على النصوص في صفحة الويب
+         * @param {boolean} increase - إذا كان true، يتم تكبير حجم النصوص، إذا كان false، يتم تصغير حجم النصوص
+         */
+        function changeFontSize(increase) {
+            var elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li, span'); // اختيار العناصر النصية فقط
+            elements.forEach(function(element) {
+                var currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+
+                // التحقق من قيمة الزيادة أو النقصان وتعديل حجم النصوص وفقًا لذلك
+                if (increase) {
+                    element.style.fontSize = (currentSize + 1) + 'px';
+                } else {
+                    element.style.fontSize = (currentSize - 1) + 'px';
+                }
+            });
+        }
+    </script>
+
+    <!-- قسم التذييل -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>الموقع: البرتغال</p>
+                <p>حقوق النشر والطباعة &copy; 2025 جميع الحقوق محفوظة</p>
+                <p>رقم الهاتف: +962-6-1234567</p>
+                <p>تم تطوير هذا الموقع من قبل: أحلام عنانزة</p>
+            </div>
+            <div class="footer-links">
+                <a href="#contact">المساعدة</a>
+                <a href="#contact">اتصل بنا</a>
+                <a href="#aboutUs">سياسة الخصوصية</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

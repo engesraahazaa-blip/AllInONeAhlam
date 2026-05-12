@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحجز</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* قسم البطل */
+        .hero {
+            background: url('imges/bokinghero.jfif') no-repeat center center/cover;
+            height: 400px;
+        }
+        .hero-section img {
+            margin-bottom: 20px; /* يمكنك ضبط هذه القيمة حسب احتياجاتك */
+        }
+        /* حاوية المحتوى */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+            margin-top: 600px; /* زيادة المسافة بين قسم البطل وقسم الحجوزات */
+        }
+
+        /* قسم الحجوزات */
+        .booking-section {
+            background: #fff;
+            margin: 40px 0; /* تكبير المسافة بين قسم البطل وقسم الحجوزات */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap; /* جعل العناصر تتوافق مع أحجام الشاشات */
+             margin-top: 20px; /* يمكنك ضبط هذه القيمة حسب احتياجاتك */
+
+        }
+
+        .slider {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-right: 20px; /* جعل المسافة على اليسار */
+            margin-bottom: 20px; /* إضافة هامش سفلي للصور */
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .booking-content {
+            max-width: 100%;
+            flex-grow: 1;
+        }
+
+        .booking-content h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #041c6b;
+            direction: rtl;
+        }
+
+        .booking-content p {
+            margin: 10px 0;
+            color: black;
+            font-size: 1rem;
+            direction: rtl;
+        }
+
+        .booking-content .price {
+            font-weight: bold;
+            color: #01af1e;
+            direction: rtl;
+        }
+
+        .booking-content button {
+            padding: 10px 20px;
+            background-color: #03ac3b;
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .booking-content button:hover {
+            background-color: #050fa8;
+        }
+
+        .nav-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .nav-buttons button {
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* قسم الإعلانات */
+        .ad-section {
+            background: #fff;
+            margin: 20px 0; /* المسافة بين قسم الحجوزات وقسم الإعلانات*/
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; /* جعل العناصر تتوافق مع أحجام الشاشات */
+        }
+
+        .ad-item {
+            width: 100%;
+            max-width: 300px;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 20px; /* إضافة هامش سفلي للترتيب */
+        }
+
+        .ad-item img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .booking-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .slider, .booking-content {
+                width: 100%;
+                margin: 0;
+            }
+
+            .ad-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .ad-item {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- رأس الصفحة -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="imges/mainLogo.png" alt="شعار الموقع">
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.html">الرئيسية</a></li>
+            <li><a href="products.html">منتجاتنا</a></li>
+            <li><a href="detealsAboutBacks.html">تفاصيل الحزم</a></li>
+            <li><a href="contactPage.html">تواصل معنا</a></li>
+            <li><a href="activiteys.html">الأنشطة والميزات</a></li>
+            <li><a href="BookingPage.html">تفاصيل المرافق</a></li>
+            <li><a href="aboutUs.html">نبذه عنا</a></li>
+        </ul>
+    </nav>
+<!-- خانة تكبير وتصغير الخط -->
+<div class="font-size-control">
+    <button onclick="changeFontSize(true)">+</button>
+    <button onclick="changeFontSize(false)">-</button>
+</div>
+<!-- زر قراءة النص بصوت عالٍ -->
+<div style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; align-items: center;">
+    <button onclick="speakSelectedText()" style="padding: 10px 20px; font-size: 16px; margin-bottom: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">اقرأ النص بصوت عالٍ</button>
+    <button onclick="stopText()" style="padding: 10px 20px; font-size: 16px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">إيقاف القراءة</button>
+</div>
+
+<script>
+    /**
+     * قراءة النص المحدد بصوت عالٍ
+     */
+    function speakSelectedText() {
+        if ('speechSynthesis' in window) {
+            var selectedText = window.getSelection().toString();
+            if (selectedText) {
+                var utterance = new SpeechSynthesisUtterance(selectedText);
+                // الكشف عن اللغة واختيار اللغة المناسبة
+                var lang = /[\u0600-\u06FF]/.test(selectedText) ? 'ar' : 'en';
+                utterance.lang = lang;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('يرجى تحديد النص الذي تريد قراءته.');
+            }
+        } else {
+            alert('متصفحك لا يدعم خاصية تحويل النص إلى كلام.');
+        }
+    }
+
+    /**
+     * إيقاف قراءة النص بصوت عالٍ
+     */
+    function stopText() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+</script>
+
+    <!-- قسم البطل -->
+    <section class="hero">
+        <img src="imges/bokinghero.jfif" style="height: 700pt; width: 100%;">
+    </section>
+     <!-- خانة تكبير وتصغير الخط -->
+     <div class="font-size-control">
+        <button onclick="changeFontSize(true)">+</button>
+        <button onclick="changeFontSize(false)">-</button>
+    </div>
+    <!-- زر قراءة النص بصوت عالٍ -->
+<div style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; align-items: center;">
+    <button onclick="speakSelectedText()" style="padding: 10px 20px; font-size: 16px; margin-bottom: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">اقرأ النص بصوت عالٍ</button>
+    <button onclick="stopText()" style="padding: 10px 20px; font-size: 16px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">إيقاف القراءة</button>
+</div>
+
+<script>
+    /**
+     * قراءة النص المحدد بصوت عالٍ
+     */
+    function speakSelectedText() {
+        if ('speechSynthesis' in window) {
+            var selectedText = window.getSelection().toString();
+            if (selectedText) {
+                var utterance = new SpeechSynthesisUtterance(selectedText);
+                // الكشف عن اللغة واختيار اللغة المناسبة
+                var lang = /[\u0600-\u06FF]/.test(selectedText) ? 'ar' : 'en';
+                utterance.lang = lang;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('يرجى تحديد النص الذي تريد قراءته.');
+            }
+        } else {
+            alert('متصفحك لا يدعم خاصية تحويل النص إلى كلام.');
+        }
+    }
+
+    /**
+     * إيقاف قراءة النص بصوت عالٍ
+     */
+    function stopText() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+</script>
+
+    <div class="container">
+        <!-- القسم الأول -->
+        <div class="booking-section">
+            <div class="slider">
+                <div class="slides">
+                    <img src="imges/res1.jpg" alt="imges/res1.jpg">
+                    <img src="imges/res2.jpg" alt="imges/res2.jpg">
+                    <img src="imges/res3.jpg" alt="imges/res3.jpg">
+                    <img src="imges/res4.jpg" alt="imges/res4.jpg">
+                </div>
+                <div class="nav-buttons">
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
+                </div>
+            </div>
+            <div class="booking-content">
+                <h2>  مطعم Étoile Royale </h2>
+                <p>مرحبًا بكم في مطعم "Étoile Royale" الفاخر، حيث تلتقي الأناقة بتجربة الطهي الفريدة، لنأخذكم في رحلة مذاقية لا تُنسى وسط أجواء منتجع الجولف الراقي.
+                    <ul>
+                    <p>المقبلات:</p>
+                    <li>تارتار سمك السلمون مع كافيار بيلوجا</li>
+                    <p>الطبق الرئيسي:</p>
+                    <li> فيليه مينون مع صلصة الكمأة السوداء والهليون </li>
+                    <p>التحلية: </p>
+                    <li>حلوى الشوكولاتة الداكنة مع قلب الفانيليا وتوت العليق</li>
+                </ul></p>
+                <p class="price">ابتداءً من: 50 دولار</p>
+                <a href="contactPage.html">  <button>احجز الآن</button></a> <!-- رابط لصفحة  -->
+            </div>
+        </div>
+        <!-- القسم الثاني -->
+        <div class="booking-section">
+            <div class="slider">
+                <div class="slides">
+                    <img src="imges/resa1.jpg" alt="imges/resa1.jpg">
+                    <img src="imges/resa2.jpg" alt="imges/resa2.jpg">
+                    <img src="imges/resa3.jpg" alt="imges/resa3.jpg">
+                    <img src="imges/resa4.jpg" alt="imges/resa4.jpg">
+                </div>
+                <div class="nav-buttons">
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
+                </div>
+            </div>
+            <div class="booking-content">
+                <h2>  مطعم Golf Green Bistro</h2>
+                <p>مرحبًا بكم في "Golf Green Bistro" حيث تمتزج الفخامة مع روعة النكهات الراقية. ندعوك لتجربة لا تُضاهى وسط أجواء منتجع الجولف الهادئة.
+                    <ul>
+                        <p>المقبلات:</p>
+                        <li>  قواقع البحر مع صلصة الزعفران والليمون</li>
+                        <p>الطبق الرئيسي:</p>
+                        <li>  لوبستر مشوي مع زبدة الأعشاب والفطر البري  </li>
+                        <p>التحلية: </p>
+                        <li>موس الشوكولاتة البيضاء مع توت العليق </li>
+                    </ul></p>
+                <p class="price">ابتداءً من: 70 دولار</p>
+                <a href="contactPage.html">  <button>احجز الآن</button></a> <!-- رابط لصفحة  -->
+            </div>
+        </div>
+        <!-- القسم الثالث -->
+        <div class="booking-section">
+            <div class="slider">
+                <div class="slides">
+                    <img src="imges/coffie1.webp" alt="imges/coffie1.webp">
+                    <img src="imges/coffie2.webp" alt="imges/coffie2.webp">
+                    <img src="imges/coffie3.webp" alt="imges/coffie3.webp">
+                    <img src="imges/coffie4.webp" alt="imges/coffie4.webp">
+                </div>
+                <div class="nav-buttons">
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
+                </div>
+ 
+            </div>
+            <div class="booking-content">
+                <h2>   مقهى Café de l'Étoile Royale - مقهى النجمة الملكية</h2>
+                <p>Café de l'Étoile Royale: مرحبًا بكم في "Café de l'Étoile Royale"، حيث الفخامة والذوق الرفيع يلتقيان لتقديم تجربة طهي لا تُنسى في أجواء راقية. استمتعوا بتذوق أفخر المشروبات والحلويات والأطباق الخفيفة.
+                    <ul>
+                        <p>المشروبات:</p>
+                        <li> إسبرسو مع كريمة الفانيليا    </li>
+                        <li>   كابتشينو مع رشة من الكاكاو الفاخر </li>
+                        <p>   الحلويات: </p> 
+                        <li>   تارت الفراولة مع كريمة الماسكربون</li>
+                        <li>  تارت الفراولة مع كريمة الماسكربون</li>
+                        <p> الأطباق الخفيفة:</p>
+                        <li>توست الأفوكادو مع البيض المسلوق</li>
+                        <li> جبن البري مع العنب والمكسرات </li>
+                    </ul>
+                </p>
+                <p class="price">ابتداءً من: 60 دولار</p>
+                 <a href="contactPage.html">  <button>احجز الآن</button></a> <!-- رابط لصفحة  -->
+            </div>
+        </div>
+        <!-- القسم الرابع -->
+        <div class="booking-section">
+            <div class="slider">
+                <div class="slides">
+                    <img src="imges/coffiea1.webp" alt="imges/coffiea1.webp">
+                    <img src="imges/coffiea2.webp" alt="imges/coffiea2.webp">
+                    <img src="imges/coffie3.webp" alt="imges/coffie3.webp">
+                    <img src="imges/coffiea4.webp" alt="imges/coffiea4.webp">
+                </div>
+                <div class="nav-buttons">
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
+                </div>
+            </div>
+            <div class="booking-content">
+                <h2> مقهى Le Salon d'Élégance - صالون الأناقة  </h2>
+                <p>Le Salon d'Élégance: مرحبًا بكم في "Le Salon d'Élégance"، حيث الأناقة والرقي يمتزجان لتقديم أفضل المشروبات والحلويات الفاخرة، في أجواء من الهدوء والاسترخاء.
+                    <ul>
+                        <p>المشروبات:</p>
+                        <li> لاتيه مع زبدة الكراميل</li>
+                        <li>  موكا مع قطع الشوكولاتة البلجيكية</li>
+                        <p>   الحلويات: </p> 
+                        <li>  براونيز الشوكولاتة البيضاء مع توت العليق  </li>
+                        <li> كيكة الزعفران مع طبقة من القشطة</li>
+                        <p> الأطباق الخفيفة:</p>
+                        <li>ساندويش الدجاج المشوي مع صلصة الريكفورد</li>
+                        <li> روست بيف مع خبز الشياباتا والخردل</li>
+                    </ul>
+                </p>
+                <p class="price">ابتداءً من: 80 دولار</p>
+                <a href="contactPage.html">  <button>احجز الآن</button></a> <!-- رابط لصفحة  -->
+            </div>
+        </div>
+                <!-- القسم الخامس -->
+                <div class="booking-section">
+                    <div class="slider">
+                        <div class="slides">
+                            <img src="imges/hotel1.webp" alt="imges/hotel1.webp">
+                            <img src="imges/hotel2.webp" alt="imges/hotel2.webp">
+                            <img src="imges/hotel3.webp" alt="imges/hotel3.webp">
+                            <img src="imges/hotel4.webp" alt="imges/hotel4.webp">
+                        </div>
+                        <div class="nav-buttons">
+                            <button class="prev">&#10094;</button>
+                            <button class="next">&#10095;</button>
+                        </div>
+                    </div>
+                    <div class="booking-content">
+                        <h2>   Majestic Haven - الملاذ المهيب فندق</h2>
+                        <p>Majestic Haven: يقدم فندق "Majestic Haven" تجربة إقامة فاخرة تجمع بين الأناقة والراحة. 
+                            يتميز الفندق بغرف وأجنحة فاخرة تطل على مناظر خلابة. يقدم 
+                            الفندق مجموعة متنوعة من المطاعم التي تقدم مأكولات عالمية ومحلية. يضم الفندق سبا فاخر يقدم 
+                            علاجات مميزة للاسترخاء والتجديد، بالإضافة إلى مركز للياقة البدنية مجهز بأحدث الأجهزة. يتميز 
+                            الفندق أيضًا بمرافق اجتماعات وحفلات زفاف فاخرة، مما يجعله الخيار الأمثل للمناسبات الخاصة.</p>
+                        <p class="price">ابتداءً من: 100 دولار</p>
+                        <a href="contactPage.html">  <button>احجز الآن</button></a> <!-- رابط لصفحة  -->
+                    </div>
+                </div>
+                <!-- القسم السادس -->
+                <div class="booking-section">
+                    <div class="slider">
+                        <div class="slides">
+                            <img src="imges/hotela1.webp" alt="imges/hotela1.webp">
+                            <img src="imges/hotela2.webp" alt="imges/hotela2.webp">
+                            <img src="imges/hotela3.jfif" alt="imges/hotela3.jfif">
+                            <img src="imges/hotela4.jfif" alt="imges/hotela4.jfif">
+                        </div>
+                        <div class="nav-buttons">
+                            <button class="prev">&#10094;</button>
+                            <button class="next">&#10095;</button>
+                        </div>
+                    </div>
+                    <div class="booking-content">
+                        <h2>   فندق The Royal Oasis - الواحة الملكية </h2>
+                        <p>The Royal Oasis: يقدم فندق "The Royal Oasis" تجربة إقامة فاخرة لا تُضاهى،
+                             حيث يتميز بغرف وأجنحة فسيحة 
+                             ومجهزة بأحدث وسائل الراحة. يوفر الفندق مجموعة متنوعة من المطاعم الراقية التي تقدم
+                              أشهى المأكولات العالمية. كما يضم سبا فاخر يقدم علاجات مميزة للاسترخاء والتجديد،
+                              بالإضافة إلى مركز للياقة البدنية مجهز بأحدث الأجهزة. يتميز الفندق أيضًا
+                              بمرافق اجتماعات وحفلات زفاف فاخرة، مما يجعله الخيار الأمثل للمناسبات الخاصة.</p>
+                        <p class="price">ابتداءً من: 1200 دولار</p>
+                        <a href="contactPage.html">  <button>احجز الآن</button></a> <!-- رابط لصفحة  -->
+                    </div>
+                </div>
+            </div>
+            <div id="map"></div> <!-- كود إضافة الخريطة للصفحة-->
+            <script>
+                // العثور على جميع الشرائح وأزرار التنقل
+                const slides = document.querySelectorAll('.slides');
+                const prevButtons = document.querySelectorAll('.prev');
+                const nextButtons = document.querySelectorAll('.next');
+                
+                // إضافة وظائف التنقل لكل مجموعة من الشرائح
+                slides.forEach((slide, index) => {
+                    let currentIndex = 0;
+                    const images = slide.children;
+                    prevButtons[index].addEventListener('click', () => {
+                        currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                        slide.style.transform = `translateX(-${currentIndex * 300}px)`; // تعديل الترجمة لتناسب حجم الصورة
+                    });
+                    nextButtons[index].addEventListener('click', () => {
+                        currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                        slide.style.transform = `translateX(-${currentIndex * 300}px)`; // تعديل الترجمة لتناسب حجم الصورة
+                    });
+                });
+            </script>
+            <script>
+                /**
+                 * تغيير حجم الخط على النصوص في صفحة الويب
+                 * @param {boolean} increase - إذا كان true، يتم تكبير حجم النصوص، إذا كان false، يتم تصغير حجم النصوص
+                 */
+                function changeFontSize(increase) {
+                    var elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li, span'); // اختيار العناصر النصية فقط
+                    elements.forEach(function(element) {
+                        var currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+        
+                        // التحقق من قيمة الزيادة أو النقصان وتعديل حجم النصوص وفقًا لذلك
+                        if (increase) {
+                            element.style.fontSize = (currentSize + 1) + 'px';
+                        } else {
+                            element.style.fontSize = (currentSize - 1) + 'px';
+                        }
+                    });
+                }
+            </script>
+        
+        <!-- قسم الإعلانات -->
+<div class="ad-section container">
+    <div class="ad-item">
+        <img src=" imges/add1.png" alt="إعلان 1">
+    </div>
+    <div class="ad-item">
+        <img src="imges/add2.png " alt="إعلان 2">
+    </div>
+</div>
+<script>
+    /**
+     * تغيير حجم الخط على النصوص في صفحة الويب
+     * @param {boolean} increase - إذا كان true، يتم تكبير حجم النصوص، إذا كان false، يتم تصغير حجم النصوص
+     */
+    function changeFontSize(increase) {
+        var elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li, span'); // اختيار العناصر النصية فقط
+        elements.forEach(function(element) {
+            var currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+
+            // التحقق من قيمة الزيادة أو النقصان وتعديل حجم النصوص وفقًا لذلك
+            if (increase) {
+                element.style.fontSize = (currentSize + 1) + 'px';
+            } else {
+                element.style.fontSize = (currentSize - 1) + 'px';
+            }
+        });
+    }
+</script>
+
+            <!-- قسم التذييل -->
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-info">
+                        <p>الموقع: البرتغال</p>
+                        <p>حقوق النشر والطباعة &copy; 2025 جميع الحقوق محفوظة</p>
+                        <p>رقم الهاتف: +962-6-1234567</p>
+                        <p>تم تطوير هذا الموقع من قبل: أحلام عنانزة</p>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#contact">المساعدة</a>
+                        <a href="#contact">اتصل بنا</a>
+                        <a href="#aboutUs">سياسة الخصوصية</a>
+                    </div>
+                </div>     
+            </footer>
+        </body>
+        </html>
+        

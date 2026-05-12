@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities & Features</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .hero {
+            background: url('imges/activiteys1.jpg') no-repeat center center/cover; /* صورة الخلفية لقسم البطل */
+            height: 400px; /* ارتفاع قسم البطل */
+        }
+        
+        .container {
+            width: 80%;
+            margin: 500px auto; /* المسافة بين قسم البطل وقسم الأنشطة */
+            overflow: hidden;
+            display:flex;
+            flex-wrap: wrap; /* للسماح بلف الأقسام */
+            justify-content: space-around; /* توزيع الأقسام بشكل متساوي */
+        }
+        .activity {
+            background: #fff;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column; /* ترتيب العناصر بشكل عمودي */
+            align-items: center;
+            max-width: 300px; /* تحديد عرض القسم */
+        }
+        
+        .slider {
+            width: 300px; /* عرض الشريحة */
+            height: 300px; /* ارتفاع الشريحة */
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slider img {
+            width: 300px; /* عرض الصورة */
+            height: 300px; /* ارتفاع الصورة */
+            border-radius: 8px;
+        }
+        .activity-content {
+            text-align: center; /* توسيط النص */
+            margin-top: 10px; /* إضافة فراغ أعلى النص */
+        }
+        .activity-content h2 {
+            margin-top: 0;
+        }
+        .nav-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .nav-buttons button {
+            background-color: rgb(0, 0, 0);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+   <!-- رأس الصفحة -->
+   <nav class="navbar">
+    <div class="logo">
+        <img src="imges/mainLogo.png" alt="شعار الموقع">
+    </div>
+    <ul class="nav-links">
+        <li><a href="home.html">الرئيسية</a></li>
+        <li><a href="products.html">منتجاتنا</a></li>
+        <li><a href="detealsAboutBacks.html">تفاصيل الحزم</a></li>
+        <li><a href="contactPage.html">تواصل معنا</a></li>
+        <li><a href="activiteys.html">الأنشطة والميزات</a></li>
+        <li><a href="BookingPage.html">تفاصيل المرافق</a></li>
+        <li><a href="aboutUs.html">نبذه عنا</a></li>
+    </ul>
+</nav>
+
+<!-- قسم البطل -->
+<div class="hero">   
+ <img src="imges/activiteys1.jpg" style="height: auto; width: 100%;">
+</div> <!-- قسم البطل يحتوي فقط على صورة خلفية -->
+
+ <!-- خانة تكبير وتصغير الخط -->
+ <div class="font-size-control">
+    <button onclick="changeFontSize(true)">+</button>
+    <button onclick="changeFontSize(false)">-</button>
+</div>
+<!-- زر قراءة النص بصوت عالٍ -->
+<div style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; align-items: center;">
+    <button onclick="speakSelectedText()" style="padding: 10px 20px; font-size: 16px; margin-bottom: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">اقرأ النص بصوت عالٍ</button>
+    <button onclick="stopText()" style="padding: 10px 20px; font-size: 16px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">إيقاف القراءة</button>
+</div>
+
+<script>
+    /**
+     * قراءة النص المحدد بصوت عالٍ
+     */
+    function speakSelectedText() {
+        if ('speechSynthesis' in window) {
+            var selectedText = window.getSelection().toString();
+            if (selectedText) {
+                var utterance = new SpeechSynthesisUtterance(selectedText);
+                // الكشف عن اللغة واختيار اللغة المناسبة
+                var lang = /[\u0600-\u06FF]/.test(selectedText) ? 'ar' : 'en';
+                utterance.lang = lang;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('يرجى تحديد النص الذي تريد قراءته.');
+            }
+        } else {
+            alert('متصفحك لا يدعم خاصية تحويل النص إلى كلام.');
+        }
+    }
+
+    /**
+     * إيقاف قراءة النص بصوت عالٍ
+     */
+    function stopText() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+</script>
+
+<div class="container">
+    <div class="activity">
+        <div class="slider">
+            <div class="slides">
+                <img src="imges/golf1.jpg" alt="imges/golf1.jpg">
+                <img src="imges/golf2.jpg" alt="imges/golf2.jpg">
+                <img src="imges/golf3.jpg" alt="imges/golf3.jpg">
+            </div>
+            <div class="nav-buttons">
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;</button>
+            </div>
+        </div>
+        <div class="activity-content">
+            <h2 style="color: rgb(0, 0, 133);"> ملعب see view  الشهير</h2>
+            <p>    نقدم لكم أفضل وأمتع التجارب الرياضية في أحد أشهر ملاعب الجولف على الإطلاق أهلا بكم </p>
+        </div>
+    </div>
+    <div class="activity">
+        <div class="slider">
+            <div class="slides">
+                <img src="imges/toor1.jpg" alt="imges/toor1.jpg">
+                <img src="imges/toor2.jpg" alt="imges/toor2.jpg">
+                <img src="imges/toor3.jpg" alt="imges/toor3.jpg">
+            </div>
+            <div class="nav-buttons">
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;"></button>
+            </div>
+        </div>
+        <div class="activity-content">
+            <h2 style="color: rgb(0, 0, 133);">جولات سياحية </h2>
+            <p>يمكنكم عمل أضل الجولات وأمتعها معنا.</p>
+        </div>
+    </div>
+    <div class="activity">
+        <div class="slider">
+            <div class="slides">
+                <img src="imges/training1.jpg" alt="imges/training1.jpg">
+                <img src="imges/training2.jpg" alt="imges/training2.jpg">
+                <img src="imges/training3.jpg" alt="imges/tadreebGolf3.jpg">
+            </div>
+            <div class="nav-buttons">
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;"></button>
+            </div>
+        </div>
+        <div class="activity-content">
+            <h2 style="color: rgb(0, 0, 133);"> ساحة تدريب الجولف</h2>
+            <p>ستحصلون على أفضل تدريب على لعب الجولف بمساعدة من مربين محترفين.</p>
+        </div>
+    </div>
+    <div class="activity">
+        <div class="slider">
+            <div class="slides">
+                <img src="imges/tadreebGolf1.jpg" alt="imges/tadreebGolf1.jpg">
+                <img src="imges/tadreebGolf2.jpg" alt="imges/tadreebGolf2.jpg">
+                <img src="imges/tadreebGolf3.jpg" alt="imges/tadreebGolf3.jpg">
+            </div>
+            <div class="nav-buttons">
+                <button class="prev">&#10094;"></button>
+                <button class="next">&#10095;"></button>
+            </div>
+        </div>
+        <div class="activity-content">
+            <h2 style="color: rgb(0, 0, 133);"> دروي جولف</h2>
+            <p>أحصل على دروس الجولف الأكثر متعة واحترافية على الإطلاق</p>
+        </div>
+    </div>
+    <div class="activity">
+        <div class="slider">
+            <div class="slides">
+                <img src="imges/tichani.jpg" alt="imges/tichani.jpg">
+                <img src="imges/tichanic2.jpg" alt="imges/tichanic2.jpg">
+                <img src="imges/ticanic3.jpg" alt="imges/ticanic3.jpg">
+            </div>
+            <div class="nav-buttons">
+                <button class="prev">&#10094;"></button>
+                <button class="next">&#10095;"></button>
+            </div>
+        </div>
+        <div class="activity-content">
+            <h2 style="color: rgb(0, 0, 133);"> تدريب رقمي</h2>
+            <p>يمكنك الحصول على ورشات للتدريب الرقمي عن بعد أينما كنت وبأحدث التقنيات.</p>
+        </div>
+    </div>
+    <div class="activity">
+        <div class="slider">
+            <div class="slides">
+                <img src="imges/holdHelp1.jpg" alt="imges/holdHelp1.jpg">
+                <img src="imges/holdHelp2.jpg" alt="imges/holdHelp2.jpg">
+                <img src="imges/holdHelp3.jpg" alt="imges/holdHelp3.jpg">
+            </div>
+            <div class="nav-buttons">
+                <button class="prev">&#10094;"></button>
+                <button class="next">&#10095;"></button>
+            </div>
+        </div>
+        <div class="activity-content">
+            <h2 style="color: rgb(0, 0, 133);">   خدمة المساعدة على حمل أدوات الجولف</h2>
+            <p>يمكننا مساعدتك في اي وقت تريده على حمل معداتك من أجل ان نمنحك فرصة بالاستمتاع باللعب دون الشهور بالتعب</p>
+        </div>
+    </div>
+</div>
+<script>
+    // العثور على جميع الشرائح وأزرار التنقل
+    const slides = document.querySelectorAll('.slides');
+    const prevButtons = document.querySelectorAll('.prev');
+    const nextButtons = document.querySelectorAll('.next');
+    
+    // إضافة وظائف التنقل لكل مجموعة من الشرائح
+    slides.forEach((slide, index) => {
+        let currentIndex = 0;
+        const images = slide.children;
+        prevButtons[index].addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            slide.style.transform = `translateX(-${currentIndex * 300}px)`; // تعديل الترجمة لتناسب حجم الصورة الجديد
+        });
+        nextButtons[index].addEventListener('click', () => {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            slide.style.transform = `translateX(-${currentIndex * 150}px)`;
+        });
+    });
+</script>
+<script>
+    /**
+     * تغيير حجم الخط على النصوص في صفحة الويب
+     * @param {boolean} increase - إذا كان true، يتم تكبير حجم النصوص، إذا كان false، يتم تصغير حجم النصوص
+     */
+    function changeFontSize(increase) {
+        var elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li, span'); // اختيار العناصر النصية فقط
+        elements.forEach(function(element) {
+            var currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+
+            // التحقق من قيمة الزيادة أو النقصان وتعديل حجم النصوص وفقًا لذلك
+            if (increase) {
+                element.style.fontSize = (currentSize + 1) + 'px';
+            } else {
+                element.style.fontSize = (currentSize - 1) + 'px';
+            }
+        });
+    }
+</script>
+
+<!-- قسم التذييل -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-info">
+            <p>الموقع: البرتغال</p>
+            <p>حقوق النشر والطباعة &copy; 2025 جميع الحقوق محفوظة</p>
+            <p>رقم الهاتف: +962-6-1234567</p>
+            <p>تم تطوير هذا الموقع من قبل : أحلام عنانزة</p>
+        </div>
+        <div class="footer-links">
+            <a href="#contact">المساعدة</a>
+            <a href="#contact">اتصل بنا</a>
+            <a href="#aboutUs">سياسة الخصوصية</a>
+        </div>
+    </div>     
+</footer>
+</body>
+</html>

@@ -1,0 +1,154 @@
+/* تنسيق الجسم الأساسي */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* تنسيق شريط التنقل */
+.navbar {
+    width: 100%;
+    overflow: hidden;
+    position: fixed; /* تثبيت شريط التنقل في أعلى الصفحة */
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px; /* تقليل الحشوة */
+    background-color: #04146d63; /* لون خلفية كحلي */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+    z-index: 1000;
+}
+
+/* تنسيق الشعار */
+.logo {
+    margin-right: auto; /* وضع الشعار على الجهة اليسرى */
+}
+.logo img {
+    width: 100px; /* عرض الشعار أصغر */
+    height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    display: block;
+    border-radius: 5px; /* حواف دائرية */
+}
+
+/* تنسيق الروابط داخل شريط التنقل */
+.nav-links {
+    list-style-type: none; /* إزالة النقاط */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end; /* محاذاة الروابط إلى اليمين */
+    flex-grow: 1;
+}
+.nav-links li {
+    display: inline; /* ترتيب الروابط أفقياً */
+}
+.nav-links a {
+    display: block;
+    color: rgb(255, 255, 255); /* لون النص */
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 10px; /* تقليل الحشوة */
+    text-decoration: none;
+    font-size: 16px; /* تصغير الخط */
+    margin-left: 5px; /* تقليل المسافة بين الروابط */
+}
+.nav-links a:hover {
+    color: #0c0074; /* تغيير لون النص عند المرور */
+}
+
+/* تنسيق العنوان */
+.page-title {
+    text-align: center; /* محاذاة النص إلى المنتصف */
+    color: #0415a5; /* اللون الكحلي */
+    margin-top: 110px; /* إضافة هامش علوي */
+    margin-bottom: 10px; /* إضافة هامش سفلي */
+    font-size: 50px;
+}
+
+/* تنسيق خانة تكبير وتصغير الخط */
+.font-size-control {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #051679;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.font-size-control button {
+    color: #fff;
+    background-color: #051679;
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.font-size-control button:hover {
+    background-color: #04146d;
+}
+
+/* تنسيق قسم التذييل */
+.footer {
+    background-color: rgba(5, 22, 121, 0.8); /* لون الخلفية كحلي شفاف قليلاً */
+    color: #fff; /* لون النص أبيض */
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    direction: rtl; /* الكتابة من اليمين لليسار */
+    margin-top: auto; /* تقليل المسافة بين التذييل والعناصر الأخرى */
+}
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.footer-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #ffffff;
+}
+.footer-links {
+    margin-top: 10px;
+    display: flex;
+    gap: 15px; /* المسافة بين الروابط */
+    justify-content: center; /* الروابط في المنتصف */
+}
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* استعلامات الوسائط لجعل التنسيق متجاوبًا */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav-links a {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+    .page-title {
+        font-size: 35px;
+        margin-top: 100px;
+    }
+    .font-size-control {
+        left: auto;
+        right: 0;
+        transform: translateY(-50%);
+    }
+}
