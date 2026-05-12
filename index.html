@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رأس الصفحة</title>
+    <!-- ربط ملف CSS -->
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="imges/mainLogo.png" alt="شعار الموقع">
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.html">الرئيسية</a></li>
+            <li><a href="products.html">منتجاتنا</a></li>
+            <li><a href="detealsAboutBacks.html">تفاصيل الحزم</a></li>
+            <li><a href="contactPage.html">تواصل معنا</a></li>
+            <li><a href="activiteys.html">الأنشطة والميزات</a></li>
+            <li><a href="BookingPage.html">تفاصيل المرافق</a></li>
+            <li><a href="aboutUs.html">نبذه عنا</a></li>
+        </ul>
+    </nav>
+    
+    <!-- خانة تكبير وتصغير الخط -->
+    <div class="font-size-control">
+        <button onclick="changeFontSize(true)">+</button>
+        <button onclick="changeFontSize(false)">-</button>
+    </div>
+
+    <!-- زر قراءة النص بصوت عالٍ -->
+<div style="position: fixed; top: 50%; right: 0; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; align-items: center;">
+    <button onclick="speakSelectedText()" style="padding: 10px 20px; font-size: 16px; margin-bottom: 10px; background-color: #00268f; color: white; border: none; border-radius: 5px; cursor: pointer;">اقرأ النص بصوت عالٍ</button>
+    <button onclick="stopText()" style="padding: 10px 20px; font-size: 16px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">إيقاف القراءة</button>
+</div>
+
+<script>
+    /**
+     * قراءة النص المحدد بصوت عالٍ
+     */
+    function speakSelectedText() {
+        if ('speechSynthesis' in window) {
+            var selectedText = window.getSelection().toString();
+            if (selectedText) {
+                var utterance = new SpeechSynthesisUtterance(selectedText);
+                // الكشف عن اللغة واختيار اللغة المناسبة
+                var lang = /[\u0600-\u06FF]/.test(selectedText) ? 'ar' : 'en';
+                utterance.lang = lang;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('يرجى تحديد النص الذي تريد قراءته.');
+            }
+        } else {
+            alert('متصفحك لا يدعم خاصية تحويل النص إلى كلام.');
+        }
+    }
+
+    /**
+     * إيقاف قراءة النص بصوت عالٍ
+     */
+    function stopText() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+</script>
+
+    <!-- قسم البطل -->
+    <section class="hero">
+        <img src="imges/holeInOne12.png" style="height: auto; width: 100%;">
+    </section>
+
+    <!-- قسم الميزات -->
+    <section class="features">
+        <h2 class="section-title">الميزات</h2>
+        <div class="feature-item">
+            <img src="imges/packeges.png" alt="صورة الميزة 1">
+            <h3>حزم VIP</h3>
+            <p>نقدم لكم أفضل الحزم لأفضل تجربة</p>
+            <a href="detealsAboutBacks.html" class="btn">التفاصيل</a>
+        </div>
+        <div class="feature-item">
+            <img src="imges/resturant.png" alt="صورة الميزة 2">
+            <h3>اقامات</h3>
+            <p>تمتع بأفضل إقامة معنا</p>
+            <a href="BookingPage.html" class="btn">التفاصيل</a>
+        </div>
+        <div class="feature-item">
+            <img src="imges/resturent1.png" alt="صورة الميزة 3">
+            <h3>مطاعم</h3>
+            <p>تناول أشهى الوجبات</p>
+            <a href="BookingPage.html" class="btn">التفاصيل</a>
+        </div>
+        <div class="feature-item">
+            <img src="imges/ture.png" alt="صورة الميزة 4">
+            <h3>جولات سياحية</h3>
+            <p>تمتع بأفضل الجولات وأمتعها</p>
+            <a href="activiteys.html" class="btn">التفاصيل</a>
+        </div>
+        <div class="feature-item">
+            <img src="imges/golfply.png" alt="صورة الميزة 5">
+            <h3>ملعب Sea View</h3>
+            <p>العب في أكثر الملاعب شهرة للجولف</p>
+            <a href="activiteys.html" class="btn">التفاصيل</a>
+        </div>
+    </section>
+    
+    <!-- قسم الشهادات المحسن -->
+    <section class="testimonials">
+        <h2>آراء عملائنا</h2>
+        <div class="testimonial-container">
+            <div class="testimonial-item">
+                <img src="imges/123.png" alt="رمز جولف" style="width: 40px; height: 40px;">
+                <p>"خدمة رائعة ومميزة!"</p>
+                <h4>أحمد</h4>
+            </div>
+            <div class="testimonial-item">
+                <img src="imges/123.png" alt="رمز جولف" style="width: 40px; height: 40px;">
+                <p>"منتجات عالية الجودة."</p>
+                <h4>سارة</h4>
+            </div>
+            <div class="testimonial-item">
+                <img src="imges/123.png" alt="رمز جولف" style="width: 40px; height: 40px;">
+                <p>"تجربة ممتازة وشاملة!"</p>
+                <h4>علي</h4>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="gallery-title">الحزم المقدمة لهذا العام</h2>
+
+    <!-- قسم المعرض -->
+    <section class="gallery">
+        <div class="gallery-item">
+            <img src="imges/golfPlay1.png" alt="صورة المعرض 1">
+            <p>Five Round Pack<br>اقامة كاملة لمدة خمس ليالي في جناح فاخر<br>وخمس جولات بالإضافة إلى 18 حفرة<br>جولة واحدة في ملعب Sea View الشهير</p>
+            <a href="detealsAboutBacks.html" class="btn">التفاصيل</a>
+        </div>
+        <div class="gallery-item">
+            <img src="imges/room1.jfif" alt="صورة المعرض 2">
+            <p>Triple Round Pack<br>اقامة ليلتين في غرفة مزدوجة مع إفطار<br>3 جولات وحفرة وجولة في ملعب Sea Food (إن وجد)<br>تأجير مجاني للعربات مع خصم 20% على المتجر</p>
+            <a href="detealsAboutBacks.html" class="btn">التفاصيل</a>
+        </div>
+        <div class="gallery-item">
+            <img src="imges/playGolf.avif" alt="صورة المعرض 3">
+            <p>Rest & Recreation Package<br>اقامة ليلة واحدة + تناول وجبة الإفطار + العشاء في أي مطعم من مطاعم المنتجع<br>الوصول للملاعب ولكن مدفوعة ومطبق الرسوم<br>المستبعد من الدفع (sea view) تأجير النادي مجاني</p>
+            <a href="detealsAboutBacks.html" class="btn">التفاصيل</a>
+        </div>
+        <div class="gallery-item">
+            <img src="imges/LongStay.jfif" alt="صورة المعرض 4">
+            <p>Long Stay Planner Package<br>يلزمك الاتصال بالموقع من صفحة contact</p>
+            <a href="detealsAboutBacks.html" class="btn">التفاصيل</a>
+        </div>
+    </section>
+
+   <!-- قسم المدونة المحسن -->
+    <section class="blog">
+        <h2>آخر الأخبار</h2>
+        <div class="blog-container">
+            <div class="blog-item">
+                <h3>الجولف رياضة الأناقة والدقة</h3>
+                <p>تتحدث هذه المقالة عن لعبة الجولف باعتبارها رياضة تجمع بين الأناقة والدقة. يوضح المقال كيف أن الجولف ليس مجرد رياضة بدنية، بل تتطلب أيضًا تركيزًا ذهنيًا وقدرة على التخطيط الاستراتيجي. يتناول المقال أيضًا أهمية اختيار المعدات المناسبة والتحضير الجيد قبل اللعب، بالإضافة إلى تقديم نصائح حول كيفية تحسين الأداء في الملعب. يتم تسليط الضوء على الجوانب الاجتماعية للجولف، وكيف يمكن أن تكون وسيلة للتواصل وبناء العلاقات.</p>
+                <a href="maqalat.html">المقالات</a>
+            </div>
+            <div class="blog-item">
+                <h3>لماذا يعتبر الجولف رياضة الجميع</h3>
+                <p>تناول هذه المقالة الأسباب التي تجعل الجولف رياضة مناسبة لجميع الأعمار والمستويات. تبدأ المقالة بالإشارة إلى أن الجولف ليس بحاجة إلى لياقة بدنية عالية، مما يجعله مثاليًا للمشاركين من جميع الفئات العمرية، من الشباب إلى كبار السن. كما يوضح المقال أن الجولف يعزز الصحة العقلية من خلال توفير بيئة هادئة وطبيعية للعب، مما يساهم في تقليل التوتر والضغط النفسي.</p>
+                <a href="maqalat.html">المقالات</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- أزرار الوسائل الاجتماعية -->
+    <div class="social-media">
+        <a href="#https://www.instagram.com/"><img src="imges/instagram_2111463.png" alt="Instagram"></a>
+        <a href="#https://twitter.com/"><img src="imges/twitter_5969020.png" alt="Twitter"></a>
+        <a href="#https://www.facebook.com/"><img src="imges/facebook_5968764.png" alt="Facebook"></a>
+    </div>
+
+    <script>
+        /**
+         * تغيير حجم الخط على النصوص في صفحة الويب
+         * @param {boolean} increase - إذا كان true، يتم تكبير حجم النصوص، إذا كان false، يتم تصغير حجم النصوص
+         */
+        function changeFontSize(increase) {
+            var elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li, span'); // اختيار العناصر النصية فقط
+            elements.forEach(function(element) {
+                var currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+
+                // التحقق من قيمة الزيادة أو النقصان وتعديل حجم النصوص وفقًا لذلك
+                if (increase) {
+                    element.style.fontSize = (currentSize + 1) + 'px';
+                } else {
+                    element.style.fontSize = (currentSize - 1) + 'px';
+                }
+            });
+        }
+
+        /**
+         * قراءة النص بصوت عالٍ
+         */
+        function speakText() {
+            var utterance = new SpeechSynthesisUtterance(document.body.innerText);
+            utterance.lang = 'ar';
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+    
+    <!-- قسم التذييل -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>الموقع: البرتغال</p>
+                <p>حقوق النشر والطباعة &copy; 2025 جميع الحقوق</p>
+                <p>رقم الهاتف: +962-6-1234567</p>
+                <p>تم تطوير هذا الموقع من قبل: أحلام عنانزة</p>
+            </div>
+            <div class="footer-links">
+                <a href="#contact">المساعدة</a>
+                <a href="#contact">اتصل بنا</a>
+                <a href="#aboutUs">سياسة الخصوصية</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
